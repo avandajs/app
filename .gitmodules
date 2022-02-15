@@ -1,0 +1,21 @@
+[submodule "client/src/avanda"]
+	path = client/src/avanda
+	url = https://github.com/avandajs/avandajs.git
+[submodule "core/app"]
+	path = core/app
+	url = https://github.com/avandajs/core.git
+[submodule "core/orm"]
+	path = core/orm
+	url = https://github.com/avandajs/orm.git
+[submodule "core/http"]
+	path = core/http
+	url = https://github.com/avandajs/http.git
+[submodule "core/file"]
+	path = core/file
+	url = https://github.com/avandajs/file.git
+[submodule "core/error"]
+	path = core/error
+	url = https://github.com/avandajs/error.git
+[submodule "core/cli"]
+	path = core/cli
+	url = https://github.com/avandajs/cli.git
