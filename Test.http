@@ -1,0 +1,9 @@
+
+###
+PATCH http://localhost:8080/?query={%22n%22:%22User%22,%22al%22:true,%22f%22:%22get%22,%22t%22:%22s%22,%22c%22:[]}
+Content-Type: application/x-www-form-urlencoded
+
+id=99&content=new-element
+
+###
+#GET http://localhost:8080/?query={%22n%22:%22User%22,%22f%22:%22get%22,%22t%22:%22s%22,%22c%22:[%22first_name%22,{%22n%22:%22Blog%22,%22t%22:%22s%22,%22c%22:[%22title%22,%22body%22]}]}
