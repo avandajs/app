@@ -1,5 +1,5 @@
-import { CommandLine } from "@avanda/cli";
-import {Out} from "@avanda/cli";
+import { CommandLine } from "../../core/cli";
+import {Out} from "../../core/cli";
 
 
 export default class Hello implements CommandLine {

@@ -1,5 +1,5 @@
-import {serverConfig} from "@avanda/app";
-import {Connection} from "@avanda/app"
+import {serverConfig} from "../core/app";
+import {Connection} from "../core/app"
 import Config from "./database";
 
 
