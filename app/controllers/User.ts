@@ -13,7 +13,7 @@ export default class User extends Controller {
     )
     async get(res: Response,req: Request){
         let userid = await this.model.getActiveUserId(req)
-        let user = new Model().find(userid);
+        let user = await new Model().find(userid);
 
         return res.success<any>('you are logged in',user)
     }

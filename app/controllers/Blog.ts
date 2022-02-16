@@ -13,7 +13,7 @@ export default class Blog extends Controller {
     }
     @Post()
     async set(res: Response, req: Request){
-        this.model?.create({
+        await this.model?.create({
             body:'Hello world',
             title: 'This is the first blog post',
             user_id: 1

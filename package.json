@@ -28,7 +28,7 @@
     "vite-plugin-node": "0.0.14"
   },
   "dependencies": {
-    "@avanda/app": "^1.9.52",
+    "@avanda/app": "^1.9.60",
     "@avanda/cli": "^0.10.18",
     "@avanda/core": "^0.9.0",
     "@avanda/error": "^0.2.3",
@@ -37,6 +37,7 @@
     "@types/express-fileupload": "^1.1.7",
     "@types/validator": "github:types/validator",
     "axios": "^0.26.0",
+    "github-download-directory": "^2.0.0",
     "joi": "^17.5.0",
     "lodash": "^4.17.21",
     "sequelize": "^6.16.1",
