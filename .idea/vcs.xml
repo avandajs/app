@@ -9,6 +9,8 @@
     <mapping directory="$PROJECT_DIR$/core/file" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/core/http" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/core/orm" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/drivers/twilio-sms-driver" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/drivers/twilio-sms-driver-test" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/testing" vcs="Git" />
   </component>
 </project>

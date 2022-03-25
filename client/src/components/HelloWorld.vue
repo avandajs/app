@@ -16,7 +16,7 @@ watch(file, async (newV) => {
   let user = await new Graph().service("User/get").where({id: 1}).post({
     full_name: 'adew',
     age: 90,
-    picture: newV
+    picture: file
   })
 })
 

@@ -6,7 +6,8 @@ import Controllers from "./controllers/.boot"
 import serverConfig from "../configs/server"
 
 async function boot() {
- const app = await new Query(serverConfig)
+ // @ts-ignore
+    const app = await new Query(serverConfig)
      .execute(
          Models,
          Controllers
