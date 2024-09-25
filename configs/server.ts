@@ -1,13 +1,10 @@
 import {serverConfig} from "../core/app";
-import {Connection} from "../core/app"
-import Config from "./database";
-
+import {Env} from "../core/app"
 
 const config: serverConfig =  {
-    connection: Connection(Config),
-    port: 8000,
+    port: Env.get('PORT'),
     rootPath: '/',
-    CORSWhitelist: ['http://localhost:3000']
+    CORSWhitelist: ['http://localhost:3000','http://localhost:9988']
 }
 
 export default config

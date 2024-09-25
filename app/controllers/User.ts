@@ -1,61 +1,59 @@
-import {Controller, Request, Response, Get, Post} from "../../core/http";
-import Model from "../models/User"
-import ValidateLogin from "../middlewares/forms/ValidateLogin";
-import ValidateRegistration from "../middlewares/forms/ValidateRegistration";
-import {Hash,Token} from "../../core/app";
+import {Controller, Get, Post, Request, Response, Watchable, Event} from "../../core/http";
+import UserModel from "../models/User"
+
+import {Fnc} from "../../core/orm";
 import LoggedUserOnly from "../middlewares/LoggedUserOnly";
+import TestEvent from "app/events/TestEvent";
+import { Op } from "sequelize";
+import NewMessageEvent from "../events/NewMessageEvent";
 
 export default class User extends Controller {
-    model?: Model
+    model?: UserModel
 
-    @Get(
-        new LoggedUserOnly()
-    )
-    async get(res: Response,req: Request){
-        let userid = await this.model.getActiveUserId(req)
-        let user = await new Model().find(userid);
 
-        return res.success<any>('you are logged in',user)
+    @Post()
+    async sendMessage(res: Response, req: Request){
+        let {channelId,message} = req.data;
+
+        await new NewMessageEvent(channelId).broadcast({message})
+
+        return res.success("Message sent!")
     }
 
-    @Post(
-        new ValidateLogin()
-    )
-    async login(res: Response,req: Request){
+    @Watchable({
+        event: (req) => new NewMessageEvent(req.params['channelId'])
+    })
+    newMessage(res: Response, req: Request){
+        let payload = req.getPayload<{message: string}>()
 
-        let user = await this.model?.where({
-            email: req.getData('email') as string
-        }).first()
-
-        if (!user){
-            return res.error('Invalid email or password')
-        }
-
-        let password = req.getData('password') as string
-
-        let isValidPassword = await Hash.verify(user.password,password)
-
-        if(!isValidPassword){
-            return res.error('Invalid login details')
-        }
-
-        // create new session
-
-        let token = await Token.generate({user_id: user.id})
-
-        return res.success('login successful', {token})
+        console.log({payload})
+        
+        return res.success("",{message: payload.message})
     }
-    @Post(
-        new ValidateRegistration()
-    )
-    async register(res: Response,req: Request){
-        // let user = await this.model?.create({
-        //     email: req.getData('email') as string,
-        //     password: await Hash.make(req.getData('password') as string),
-        //     full_name: req.getData('full_name') as string,
-        // })
 
-        // console.log({user: req.data})
 
+    @Get()
+    async fireEvent(res: Response, req: Request){
+        // new TestEvent().broadcast();
+        // new TestEvent().broadcast();
+        return res.success("heyyyy", [])
     }
+
+
+    @Get()
+    async get(res: Response, req: Request){
+        // new TestEvent().broadcast();
+        return res.success("heyyyy", {"hello": "world"})
+    }
+
+    @Get()
+    profile(res: Response, req: Request){
+
+        new UserModel().select(Fnc.query('select COUNT user.id')).as('pending')
+
+        return res.success("heyyyy", {
+            thisIs: 'profile'
+        })
+    }
+
 }

@@ -18,6 +18,7 @@ watch(file, async (newV) => {
     age: 90,
     picture: file
   })
+  // console.log(u)
 })
 
 // // let blog = new Graph().service("Blog/get")

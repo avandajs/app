@@ -2,6 +2,9 @@ import {Column,Model} from "../../core/orm";
 import User from "./User";
 
 export default class Blog extends Model{
+    
+    perPage = 60;
+
     @Column.text()
     title?:string;
 

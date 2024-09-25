@@ -6,17 +6,15 @@ export default class Blog extends Controller {
     
     @Get()
     async get(res: Response, req: Request){
-
-        console.log({arg: req.getArgs('id')})
-
         return res.success<any>('hello world',this.model?.first())
     }
     @Post()
     async set(res: Response, req: Request){
         await this.model?.create({
-            body:'Hello world',
+            body: 'Hello world',
             title: 'This is the first blog post',
-            user_id: 1
+            user_id: 1,
+            perPage: 0
         })
     }
 }
